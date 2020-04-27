@@ -1,0 +1,31 @@
+Padrões que foram Utilizados na aplicação:
+
+    Singleton   -> utilização de apenas uma instância de um objeto em todo ciclo de vida da aplicação.
+    Classe      -> br.unisinos.edu.dev2.covid.designpatterns.api.config.ObjectMapperSingleton
+
+    Factory     -> Construir um novo objeto ObjectMapper a partir de configurações especificas.
+    Classe      -> br.unisinos.edu.dev2.covid.designpatterns.api.config.ObjectMapperFactory
+    Usado em    -> br.unisinos.edu.dev2.covid.designpatterns.api.config.ObjectMapperSingleton
+
+    Buildexr     -> Construir URLs de acesso a API externa.
+    Classe      -> br.unisinos.edu.dev2.covid.designpatterns.api.proxyRepository.CovidTrackerApiUrlBuilder
+    Usado em    -> br.unisinos.edu.dev2.covid.designpatterns.api.proxyRepository.CovidTrackerProxyRepository
+
+    Bridge      -> Separação da abstração e implementação com uso de interface na controller.
+    Interface   -> br.unisinos.edu.dev2.covid.designpatterns.api.service.interfaces.CovidDataService
+    Usado em    -> br.unisinos.edu.dev2.covid.designpatterns.api.controller.DadosCovidController
+
+    Proxy       -> Representa os dados vindos de outra fonte remota.
+    Classe      -> br.unisinos.edu.dev2.covid.designpatterns.api.proxyRepository.models.Location
+
+
+URLs para acesso aos dados com a aplicação em execução:
+
+    URLs para acesso a interface web:
+        Consulta por localização:   http://localhost:8080/web/location/{{id_pais}}
+        Consulta Global:            http://localhost:8080/web/global
+
+
+    URLs para acesso via API:
+        Consulta por localização:   GET-> http://localhost:8080/dados-covid/por-localizacao/{{id_pais}}
+        Consulta Global:            GET-> http://localhost:8080/dados-covid/global
