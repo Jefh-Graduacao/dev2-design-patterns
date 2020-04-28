@@ -6,7 +6,7 @@
 <body>
 <div>
     <div>
-        <h1>Convid Por Localização</h1>
+        <h1>COVID Por Localização</h1>
         <table border="1">
             <thead>
                 <th>ID</th>

@@ -6,7 +6,7 @@
 <body>
 <div>
     <div>
-        <h1>Convid Global</h1>
+        <h1>COVID Global</h1>
         <table border="1">
             <thead>
                 <th>Casos confirmados</th>

@@ -19,11 +19,12 @@ import java.net.URL;
 public class CovidTrackerProxyRepository {
     private final String source;
     private final boolean includeTimelines;
+    private final CovidTrackerApiUrlBuilder urlBuilder;
 
     public CovidTrackerProxyRepository(String source, boolean includeTimelines) {
         this.source = source;
         this.includeTimelines = includeTimelines;
-
+        this.urlBuilder = CovidTrackerApiUrlBuilder.createDefaultBuilder().withApiVersion(2);
     }
 
     /**
@@ -33,8 +34,7 @@ public class CovidTrackerProxyRepository {
      * @throws IOException
      */
     public Location findByLocation(Integer locationCode) throws IOException {
-        CovidTrackerApiUrlBuilder urlBuilder = CovidTrackerApiUrlBuilder.createDefaultBuilder().withApiVersion(2);
-        var url = urlBuilder
+        var url = this.urlBuilder
                 .withResource("locations")
                 .withPathParam(locationCode)
                 .withQueryString("source", this.source)
@@ -48,8 +48,7 @@ public class CovidTrackerProxyRepository {
     }
 
     public InfectedData getGlobalData() throws IOException {
-        CovidTrackerApiUrlBuilder urlBuilder = CovidTrackerApiUrlBuilder.createDefaultBuilder().withApiVersion(2);
-        var url = urlBuilder
+        var url = this.urlBuilder
                 .withResource("latest")
                 .withQueryString("source", this.source)
                 .build();
